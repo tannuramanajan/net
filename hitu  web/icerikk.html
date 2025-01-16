@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılım Mühendisliği</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #d4d2d2;
+            ;
+            padding: 10px 0;
+        }
+        
+        .menu-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-item:hover {
+            background-color: transparent;
+            color: #e7e0e0;
+            border-radius: 5px;
+        }
+        
+        .icon {
+            font-size: 20px;
+            margin-right: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover .icon {
+            transform: scale(1.2);
+        }
+        
+        .text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #fff;
+            color: #333;
+            border: 5px solid #ccc;
+            border-radius: 5px;
+            padding: 15px 20px;
+            white-space: nowrap;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 100%;
+            margin-left: 10px;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+        }
+        
+        .menu-item:hover .text {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* baslik */
+        
+        .container {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+        }
+        
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1.5rem;
+            color: black;
+            background-color: white;
+            scroll-snap-align: start;
+            height: 100vh;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            padding: 20px;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .page-1 {
+            background-color: #ffffff;
+        }
+        
+        .page-2 {
+            background-color: #ffffff;
+            flex-direction: row-reverse;
+        }
+        /* menü */
+        
+        .page-3 {
+            background-color: #ffffff;
+        }
+        
+        .page-4 {
+            background-color: #ffffff;
+        }
+        
+        .page-5 {
+            background-color: #ffffff;
+        }
+        
+        .page-6 {
+            background-color: #ffffff;
+        }
+        
+        .page-7 {
+            background-color: #ffffff;
+        }
+        
+        .page-8 {
+            background-color: #ffffff;
+        }
+        /* 用于图片和文字布局 */
+        /* menü */
+        
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .left {
+            flex: 1;
+            text-align: left;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .left-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: black;
+            position: relative;
+            /* Elemanın konumlandırılmasını sağlar */
+            top: 20px;
+            left: 70px;
+            /* Elemanı sağa doğru 50px kaydırır */
+        }
+        
+        .left-text:hover {
+            transform: scale(1.2);
+            color: #000000;
+        }
+        
+        .right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        /* 放大镜效果的文字样式 */
+        /* 放大镜效果样式 */
+        /*sayfa4*/
+        
+        .step {
+            position: relative;
+            top: -200px;
+            background-image: radial-gradient(rgba(229, 250, 190, 0.978), rgba(143, 155, 126, 0.978));
+            color: rgb(16, 15, 15);
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 30px;
+        }
+        
+        .step:hover {
+            transform: scale(1.05);
+        }
+        
+        .description {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 25px;
+            color: #140606;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .step:hover .description {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #007bff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover::before {
+            border-color: #0056b3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        /*sayfa 5*/
+        
+        .app1 {
+            margin-right: 70px;
+            position: relative;
+            display: inline-block;
+            margin: 80px;
+            text-align: center;
+        }
+        
+        .app1 img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app1 img:hover {
+            transform: scale(1.1);
+            /* İkonlara hover animasyonu */
+        }
+        
+        .app1:hover.tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .app2 {
+            margin-right: 150px;
+            position: relative;
+            display: inline-block;
+            margin: 50px;
+            text-align: center;
+        }
+        
+        .app2 img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app2 img:hover {
+            transform: scale(1.1);
+            /* İkonlara hover animasyonu */
+        }
+        
+        .app2:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .app3 {
+            margin-right: 100px;
+            /*margin-right: 70px;*/
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+        }
+        
+        .app3 img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app3 img:hover {
+            transform: scale(1.1);
+            /* İkonlara hover animasyonu */
+        }
+        
+        .app3:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .app4 {
+            margin-right: 70px;
+            /*margin-right: 70px;*/
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+        }
+        
+        .app4 img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app4 img:hover {
+            transform: scale(1.1);
+            /* İkonlara hover animasyonu */
+        }
+        
+        .app4:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .app5 {
+            margin-right: 70px;
+            position: relative;
+            display: inline-block;
+            margin: 60px;
+            text-align: center;
+        }
+        
+        .app5 img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app5 img:hover {
+            transform: scale(1.1);
+            /* İkonlara hover animasyonu */
+        }
+        
+        .app5:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .app6 {
+            margin-right: 70px;
+            /*margin-right: 70px;*/
+            position: relative;
+            display: inline-block;
+            margin: 45px;
+            text-align: center;
+        }
+        
+        .app6 img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app6 img:hover {
+            transform: scale(1.1);
+            /* İkonlara hover animasyonu */
+        }
+        
+        .app6:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .tooltip {
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            color: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            max-width: 180px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+        .tooltip .line1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .tooltip .line2 {
+            font-size: 15px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .tooltip .line3 {
+            font-size: 12px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .circle-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .top-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .top-section h1 {
+            margin: 0;
+            font-size: 2em;
+            line-height: 1.8;
+            max-width: 50%;
+            word-wrap: break-word;
+            margin: 0 auto;
+            font-family: 'Merriweather', serif;
+            color: #efefef;
+            text-align: justify;
+            text-align-last: left;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+        .bottom-section {
+            flex: 2;
+            display: flex;
+            flex-direction: row;
+            background-color: #eaeaea;
+        }
+        
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #fff;
+            border-right: 1px solid #ffffff;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .column:last-child {
+            border-right: none;
+        }
+        
+        .column .content p {
+            margin: 0 0 10px 0;
+            font-size: 1.6em;
+            line-height: 1;
+            max-width: 90%;
+            font-family: 'Merriweather', serif;
+            color: #333;
+            word-wrap: break-word;
+            text-align: left;
+            /* Genel stil */
+            /* Arama kutusu stili */
+            .search {
+                position: relative;
+                width: 300px;
+            }
+            .search input[type="text"] {
+                width: 100%;
+                padding: 10px 20px;
+                border: 2px solid transparent;
+                border-radius: 25px;
+                font-size: 16px;
+                transition: all 0.3s ease-in-out;
+                background: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                outline: none;
+            }
+            /* Placeholder stili */
+            .search input[type="text"]::placeholder {
+                color: #aaa;
+                font-style: italic;
+            }
+            /* Focus efekti */
+            .search input[type="text"]:focus {
+                border: 2px solid #4caf50;
+                box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+                background: #f9f9f9;
+            }
+            /* Hover efekti */
+            .search input[type="text1"]:hover {
+                transform: scale(1.02);
+            }
+            /* Arama animasyonu */
+            .search input[type="text1"]:focus {
+                animation: pulse 0.6s infinite alternate;
+            }
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    border-color: #4caf50;
+                }
+                100% {
+                    transform: scale(1.03);
+                    border-color: #66bb6a;
+                }
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .menu-item {
+                padding: 8px;
+            }
+            .menu-item img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .menu-item {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- menu -->
+    <nav>
+        <a href="index.html" class="menu-item houm">
+            <div><img src="hom.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">HOME</span>
+        </a>
+        <a href="icerikk.html" class="menu-item ">
+            <div><img src="pro.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">CONTACT</span>
+        </a>
+        <a href="profil.html" class="menu-item ">
+            <div>
+                <img src="abou.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">ABOUT</span>
+        </a>
+        <a href="haberler.html" class="menu-item ">
+            <div>
+                <img src="servis.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">HABER</span>
+        </a>
+
+    </nav>
+
+    <div class="container">
+        <!-- 1sayfa -->
+        <div class="section page-1">
+            <h1>Yazılım Mühendisliği Nedir?</h1>
+
+        </div>
+
+        <!-- 2sayfa -->
+        <div class="section page-2">
+            <div class="content">
+                <div class="left">
+                    <h2 class="left-text">
+                        <p>Yazılım mühendisliği yazılım sistemlerinin tasarımı geliştirilmesi,</p>
+                        <p>geliştirilmesi test edilmesi ve bakımıyla ilgilenen bir mühendislik </p>
+                        <p>dalıdır. bir mühendislik dalıdır. Kullanıcı ihtiyaçlarını kar şılayan</p>
+                        <p> güvenilir verimli ölçeklenebilir yazılımlar üretmeyi amaçlar.Web, </p>
+                        <p> mobil yapay zeka oyun ve gömülü sistemler gibi alanlarda uzm</p>
+                        <p> anlaşabilir.Ayrıca projelerde analiz, kodlama, test ve güncelleme</p>
+                        <p>gibi süreçleri yürütür. Yazılım mühendisliği,teknolojinin temel </p>
+                        <p> taşlarından biridir ve modern yaşamın birçok alanında kritik bir</p>
+                        <p> rol oynar. Problem çözmeyi seven ve teknolojiye ilgi duyan kişiler </p>
+                        <p></p>
+                        <p>için ideal bir meslek olabilir.</p>
+                    </h2>
+
+                </div>
+                <div class="right">
+                    <img src="muhendis (2).png" alt="resim">
+                </div>
+            </div>
+        </div>
+
+        <!-- 3sayfa -->
+        <div class="section page-1">
+            <h1>Yazılım Mühendisliğinin Temel Aşamaları</h1>
+        </div>
+        <div class="section">
+            <div class="step">
+                PLANLAMA
+                <div class="description">
+                    Yazılım yaşam döngüsünün ilk adımıdır. Proje için zaman ve maliyet tahminleri yapılır ve feasibility (yapılabilirlik) raporları hazırlanır.
+                </div>
+            </div>
+
+            <div class="step">
+                GEREKSİNİM ANALİZİ
+                <div class="description">
+                    Yazılımın gereksinimleri tanımlanır ve belgelenir. Bu aşama, risk analizi, kaynak değerlendirmesi ve zaman planlamasını içerir.
+                </div>
+            </div>
+
+            <div class="step">
+                TASARIM
+                <div class="description">
+                    Yazılımın teknik yapısı ve sistemin çalışma ilkeleri detaylı bir şekilde açıklanır。Bu aşama yazılımın fonksiyonel yapısını ortaya koyar.
+                </div>
+            </div>
+
+            <div class="step">
+                GERÇEKLEŞTİRME
+                <div class="description">
+                    Analiz ve planlama tamamlandığında, programın kodlanması yapılır。Bu aşama kodlama, test ve dağıtım sürecini kapsar。
+                </div>
+            </div>
+
+            <div class="step">
+                TEST
+                <div class="description">
+                    Yazılımın teslim edilmeden önce son denetimleri ve düzeltmeleri gerçekleştirilir。Bu aşama, yazılımın kalitesini sağlamak için yapılır。
+                </div>
+            </div>
+
+            <div class="step">
+                BAKIM
+                <div class="description">
+                    Yazılımın tesliminden sonra başlar ve yazılımın yaşam döngüsü boyunca devam eder。
+                </div>
+            </div>
+        </div>
+        <!-- 4sayfa -->
+        <div class="section page-1">
+            <h1>Popüler Programlama Dilleri</h1>
+        </div>
+        <div class="section">
+            <div class="app1 ">
+                <a href="https://tr.wikipedia.org/wiki/Python" style="text-decoration: none;">
+                    <img src="python (2).png" alt="python img" style="width: 160px; height: 160px;">
+                </a>
+                <div class="tooltip">
+                    <div class="line1">Python</div>
+                    <div class="line2">Yüksek Seviye</div>
+                    <div class="line3">(1991)</div>
+                </div>
+            </div>
+            <div class="app2 ">
+                <a href="https://zh.wikipedia.org/zh-hans/C%2B%2B" style="text-decoration: none;">
+                    <img src="C++ (2).png" alt="c++ img" style="width: 140px; height: 140px;">
+                </a>
+                <div class="tooltip">
+                    <div class="line1">C++</div>
+                    <div class="line2">Orta Seviye</div>
+                    <div class="line3">(1985)</div>
+                </div>
+            </div>
+            <div class="app3 ">
+                <a href="https://en.wikipedia.org/wiki/Java_(programming_language)" style="text-decoration: none;">
+                    <img src="java (2).png" alt="java img" style="width: 220px; height: 220px;">
+                </a>
+                <div class="tooltip">
+                    <div class="line1">Java</div>
+                    <div class="line2">Yüksek Seviye</div>
+                    <div class="line3">(1995)</div>
+                </div>
+            </div>
+            <div class="app4 ">
+                <a href="https://en.wikipedia.org/wiki/JavaScript" style="text-decoration: none;">
+                    <img src="js (2).png" alt="js img" style="width: 230px; height: 215px;">
+                </a>
+                <div class="tooltip">
+                    <div class="line1">JavaScript(js)</div>
+                    <div class="line2">Yüksek Seviye</div>
+                    <div class="line3">(1995)</div>
+                </div>
+            </div>
+            <div class="app5 ">
+                <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)" style="text-decoration: none;">
+                    <img src="result_C-Sharp-Tutorials (1).webp" alt="c# img" style="width: 240px; height: 135px;">
+                </a>
+                <div class="tooltip">
+                    <div class="line1">C#</div>
+                    <div class="line2">Yüksek Seviye</div>
+                    <div class="line3">(2000)</div>
+                </div>
+            </div>
+            <div class="app6 ">
+                <a href="https://en.wikipedia.org/wiki/Ruby_(programming_language)" style="text-decoration: none;">
+                    <img src="ruby (2).png" alt="ruby img" style="width: 110px; height: 110px;">
+                </a>
+                <div class="tooltip">
+                    <div class="line1">Ruby</div>
+                    <div class="line2">Yüksek Seviye</div>
+                    <div class="line3">(1995)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5sayfa -->
+        <div class="section page-1">
+            <h1>Yazılım Mühendisi Ne İş Yapar?</h1>
+
+        </div>
+        <!-- 6sayfa -->
+        <div class="section page-6">
+            <div class="section1">
+                <div class="bottom-section">
+                    <div class="column">
+                        <h2>Yazılım Mühendisi Kimdir?</h2>
+                        <div class="content">
+                            <p> Yazılım mühendisi, bilgisayar programları ve sistemlerini tasarlayan, geliştiren ve bakımını yapan bir uzmandır. Kullanıcı ihtiyaçlarını analiz ederek bu ihtiyaçlara uygun yazılımlar oluşturur. Programlama dilleriyle kod yazar,
+                                yazılımın doğru çalışması için testler yapar ve sorunları çözer.</p>
+                        </div>
+                        <div class="column">
+                            <h2>Uzmanlık ve Çalışma Alanları</h2>
+                            <div class="content">
+                                <p> Yazılım mühendisleri, web geliştirme, mobil uygulama, yapay zeka, oyun geliştirme veya gömülü sistemler gibi farklı alanlarda çalışabilir. Mevcut yazılımları optimize eder, ekip çalışmasıyla projeler yürütür ve teknolojik
+                                    yenilikler yaratır. Problem çözmeyi seven kişiler için ideal bir meslektir.</p>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const sections = document.querySelectorAll('.section');
+                            const container = document.querySelector('.container');
+
+
+                            sections[0].classList.add('visible');
+
+                            container.addEventListener('scroll', () => {
+                                const scrollPosition = container.scrollTop + window.innerHeight / 2;
+
+                                sections.forEach(section => {
+                                    const sectionTop = section.offsetTop - container.offsetTop;
+                                    const sectionHeight = section.offsetHeight;
+
+                                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                                        section.classList.add('visible');
+                                    } else {
+                                        section.classList.remove('visible');
+                                    }
+                                });
+                            });
+
+
+                            const magnifier = document.querySelector('.magnifier');
+                            const magnifyingText = document.querySelector('.magnifying-text');
+
+                            magnifyingText.addEventListener('mousemove', (event) => {
+                                magnifier.style.display = 'block';
+                                const mouseX = event.pageX;
+                                const mouseY = event.pageY;
+
+
+                                magnifier.style.left = mouseX - magnifier.offsetWidth / 2 + 'px';
+                                magnifier.style.top = mouseY - magnifier.offsetHeight / 2 + 'px';
+                            });
+
+                            magnifyingText.addEventListener('mouseleave', () => {
+                                magnifier.style.display = 'none';
+                            });
+                        });
+                    </script>
+</body>
+
+</html>

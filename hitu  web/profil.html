@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel="stylesheet" type="text/css">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=deathrattle+bb" rel="stylesheet');
+        @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Nova+Square|Supermercado+One|VT323|Homenaje|Jolly+Lodger');
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-image: transparent;
+            ;
+            padding: 1px 0;
+        }
+        
+        .menu-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-item:hover {
+            background-color: transparent;
+            color: #e7e0e0;
+            border-radius: 5px;
+        }
+        /* Icon styles */
+        
+        .icon {
+            font-size: 20px;
+            margin-right: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover .icon {
+            transform: scale(1.2);
+        }
+        /* Tooltip text */
+        
+        .text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: #fff;
+            color: #333;
+            border: 5px solid #ccc;
+            border-radius: 5px;
+            padding: 15px 20px;
+            white-space: nowrap;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 100%;
+            margin-left: 10px;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+        }
+        /* Show tooltip on hover */
+        
+        .menu-item:hover .text {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* Adjust tooltip for different icons */
+        
+        .houm .icon {
+            color: #4caf50;
+            /* Green for home */
+        }
+        
+        .menu-item:nth-child(1) .icon {
+            color: #ff9800;
+            /* Orange for About */
+        }
+        
+        .menu-item:nth-child(2) .icon {
+            color: #2196f3;
+            /* Blue for Services */
+        }
+        
+        .menu-item:nth-child(4) .icon {
+            color: #f44336;
+            /* Red for Contact */
+        }
+        
+        body {
+            font-family: 'DeathRattle BB', Arial, sans-serif;
+            margin: auto;
+            background: #f2f0f0;
+            color: red;
+            text-align: center;
+        }
+        
+        .blink {
+            animation: blink-animation 1s steps(2, start) infinite;
+            -webkit-animation: blink-animation 1s steps(2, start) infinite;
+        }
+        
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .container img {
+            width: 750px;
+            /* Ortadaki logo boyutu */
+            height: auto;
+        }
+        
+        .icon img {
+            transition: .4s ease-out;
+            width: 120px;
+            height: 120px;
+            border-radius: 100px;
+            border: 0px;
+            object-fit: cover;
+            padding: 0px;
+        }
+        
+        .icon img:hover {
+            transform: scale(110%);
+            transition: transform .3s;
+            box-shadow: 0px 0px 60px green;
+            height: 120px;
+            width: 120px;
+            filter: saturate(150%);
+        }
+        
+        .name {
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 24px;
+            letter-spacing: 0.9px;
+            word-spacing: 0px;
+            color: #000000;
+            font-weight: 200;
+            text-decoration: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: lowercase;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .name a {
+            text-decoration: none;
+            /* Remove underline */
+            color: #000000;
+            /* Ensure link color matches text color */
+        }
+        
+        .name:hover {
+            transform: scale(110%);
+            transition: transform .4s;
+            height: 24px;
+            filter: saturate(150%);
+            text-shadow: 2px 2px 0px rgb(143, 155, 155), 2px 2px 0 rgb(88, 94, 88), 2px 3px 0 rgb(176, 185, 176), 0px 0px 0 green;
+        }
+        
+        .baslik img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .baslik p {
+            font-size: 1.2em;
+            color: white;
+        }
+        
+        .container1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-top: 20px solid #333;
+            /* 设置颜色和大小，形成一个三角形 */
+            margin-bottom: 15px;
+            /* 给文字留出空间 */
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+        /* 向下弹跳动画 */
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(15px);
+            }
+        }
+        /* 链接样式 */
+        
+        .link {
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: bold;
+            color: #050404;
+            transition: all 0.3s ease;
+        }
+        /* 鼠标悬停效果 */
+        
+        .link:hover {
+            color: #0e8e8a;
+            /* 悬停时文字颜色变化 */
+            text-decoration-color: transparent;
+        }
+        
+        footer {
+            background-color: #c2a866;
+            color: #fff;
+            padding: 30px 0;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Footer Container */
+        
+        .footer-container {
+            align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        /* Logo */
+        
+        .footer-logo h1 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #0c0b0b;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-logo h1:hover {
+            color: #2175be;
+            /* Logo üzerine gelindiğinde renk değişimi */
+        }
+        /* Linkler */
+        
+        .footer-links ul {
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        
+        .footer-links ul li {
+            margin-right: 30px;
+            position: relative;
+        }
+        
+        .footer-links ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1em;
+            font-weight: normal;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        /* Link hover efekti */
+        
+        .footer-links ul li a:hover {
+            color: #4CAF50;
+            transform: scale(1.1);
+            /* Linklerin üzerine gelindiğinde büyümesi */
+        }
+        /* Sosyal İkonlar */
+        
+        .footer-social a {
+            margin: 0 15px;
+            display: inline-block;
+        }
+        
+        .footer-social img {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        /* Sosyal ikonların hover efekti */
+        
+        .footer-social img:hover {
+            transform: scale(1.2);
+        }
+        
+        .footer-contact a {
+            margin: 0 15px;
+            display: inline-block;
+        }
+        
+        .footer-contact img {
+            width: 25px;
+            height: 25px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        /* Sosyal ikonların hover efekti */
+        
+        .footer-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+        
+        .footer-contact ul li a:hover {
+            color: #57a3b0;
+            transform: scale(1.1);
+        }
+        
+        .footer-contact img:hover {
+            transform: scale(1.2);
+        }
+        /* Footer Bottom */
+        
+        .footer-bottom {
+            text-align: center;
+            font-size: 1.9em;
+            margin-top: 10px;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+        }
+        /* Animasyonlu Çizgiler */
+        
+        .footer-lines {
+            margin: 10px auto;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            padding: 10px 0;
+        }
+        
+        .line {
+            width: 30%;
+            height: 3px;
+            /* Çizgilerin boyutunu küçülttük */
+            background-color: #fff;
+            opacity: 0.6;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease-out;
+        }
+        
+        .line-1 {
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+        }
+        
+        .line-2 {
+            background: linear-gradient(90deg, #FF9800, #FFC107);
+        }
+        
+        .line-3 {
+            background: linear-gradient(90deg, #F44336, #E91E63);
+        }
+        /* Çizgiler Hover Animasyonu */
+        
+        footer:hover .footer-lines .line {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+        
+        footer:hover .line-1 {
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+        }
+        
+        footer:hover .line-2 {
+            background: linear-gradient(90deg, #FF9800, #FFC107);
+        }
+        
+        footer:hover .line-3 {
+            background: linear-gradient(90deg, #F44336, #E91E63);
+        }
+        /* Footer Lines'ı Sosyal Medya İkonlarının Altına Yerleştir */
+        
+        .footer-social {
+            position: relative;
+            z-index: 2;
+            /* Sosyal medya ikonlarının üzerine çizgileri yerleştirmemek için */
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-logo h1 {
+                font-size: 1.5em;
+            }
+            .footer-links ul {
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+            .footer-links ul li {
+                margin: 10px;
+            }
+            .footer-social {
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-logo h1 {
+                font-size: 1.3em;
+            }
+            .footer-links ul li a {
+                font-size: 0.9em;
+            }
+            .footer-social img {
+                width: 20px;
+                height: 20px;
+            }
+            .footer-bottom {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="menu-item houm">
+            <div><img src="hom.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">HOME</span>
+        </a>
+        <a href="icerikk.html" class="menu-item ">
+            <div><img src="pro.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">CONTACT</span>
+        </a>
+        <a href="profil.html" class="menu-item ">
+            <div>
+                <img src="abou.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">ABOUT</span>
+        </a>
+        <a href="haberler.html" class="menu-item ">
+            <div>
+                <img src="servis.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">HABER</span>
+        </a>
+
+    </nav>
+    <div class="baslik"> <img src="mountain.jpg" alt="gozukmuyor">
+    </div>
+    <div>
+
+        <div class="container">
+            <div class="icon"> <img src="toux.jpg"> </div>
+            <p class="name"><a href="inde.html">@Tangnur</a></p>
+
+        </div>
+        <div class="container1">
+            <div class="arrow"></div>
+            <a href="profil icer.html" class="link">GIRIS</a>
+        </div>
+    </div>
+
+    <script>
+        var snowStorm = null;
+
+        function SnowStorm() {
+
+            // --- PROPERTIES ---
+
+            this.flakesMax = 128; // Limit total amount of snow made (falling + sticking)
+            this.flakesMaxActive = 64; // Limit amount of snow falling at once (less = lower CPU use)
+            this.animationInterval = 33; // Theoretical "miliseconds per frame" measurement. 20 = fast + smooth, but high CPU use. 50 = more conservative, but slower
+            this.flakeBottom = null; // Integer for Y axis snow limit, 0 or null for "full-screen" snow effect
+            this.targetElement = null; // element which snow will be appended to (document body if null/undefined) - can be an element ID string, or a DOM node reference
+            this.followMouse = true; // Snow will change movement with the user's mouse
+            this.snowColor = '#fff'; // Don't eat (or use?) yellow snow.
+            this.snowCharacter = '&bull;'; // &bull; = bullet, &middot; is square on some systems etc.
+            this.snowStick = true; // Whether or not snow should "stick" at the bottom. When off, will never collect.
+            this.useMeltEffect = true; // When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it
+            this.useTwinkleEffect = false; // Allow snow to randomly "flicker" in and out of view while falling
+            this.usePositionFixed = false; // true = snow not affected by window scroll. may increase CPU load, disabled by default - if enabled, used only where supported
+
+            // --- less-used bits ---
+
+            this.flakeLeftOffset = 0; // amount to subtract from edges of container
+            this.flakeRightOffset = 0; // amount to subtract from edges of container
+            this.flakeWidth = 8; // max pixel width for snow element
+            this.flakeHeight = 8; // max pixel height for snow element
+            this.vMaxX = 5; // Maximum X velocity range for snow
+            this.vMaxY = 4; // Maximum Y velocity range
+            this.zIndex = 0; // CSS stacking order applied to each snowflake
+
+            // --- End of user section ---
+
+            // jslint global declarations
+            /*global window, document, navigator, clearInterval, setInterval */
+
+            var addEvent = (typeof(window.attachEvent) == 'undefined' ? function(o, evtName, evtHandler) {
+                return o.addEventListener(evtName, evtHandler, false);
+            } : function(o, evtName, evtHandler) {
+                return o.attachEvent('on' + evtName, evtHandler);
+            });
+
+            var removeEvent = (typeof(window.attachEvent) == 'undefined' ? function(o, evtName, evtHandler) {
+                return o.removeEventListener(evtName, evtHandler, false);
+            } : function(o, evtName, evtHandler) {
+                return o.detachEvent('on' + evtName, evtHandler);
+            });
+
+            function rnd(n, min) {
+                if (isNaN(min)) {
+                    min = 0;
+                }
+                return (Math.random() * n) + min;
+            }
+
+            function plusMinus(n) {
+                return (parseInt(rnd(2), 10) == 1 ? n * -1 : n);
+            }
+
+            var s = this;
+            var storm = this;
+            this.timers = [];
+            this.flakes = [];
+            this.disabled = false;
+            this.active = false;
+
+            var isIE = navigator.userAgent.match(/msie/i);
+            var isIE6 = navigator.userAgent.match(/msie 6/i);
+            var isOldIE = (isIE && (isIE6 || navigator.userAgent.match(/msie 5/i)));
+            var isWin9X = navigator.appVersion.match(/windows 98/i);
+            var isiPhone = navigator.userAgent.match(/iphone/i);
+            var isBackCompatIE = (isIE && document.compatMode == 'BackCompat');
+            var noFixed = ((isBackCompatIE || isIE6 || isiPhone) ? true : false);
+            var screenX = null;
+            var screenX2 = null;
+            var screenY = null;
+            var scrollY = null;
+            var vRndX = null;
+            var vRndY = null;
+            var windOffset = 1;
+            var windMultiplier = 2;
+            var flakeTypes = 6;
+            var fixedForEverything = false;
+            var opacitySupported = (function() {
+                try {
+                    document.createElement('div').style.opacity = '0.5';
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            })();
+            var docFrag = document.createDocumentFragment();
+            if (s.flakeLeftOffset === null) {
+                s.flakeLeftOffset = 0;
+            }
+            if (s.flakeRightOffset === null) {
+                s.flakeRightOffset = 0;
+            }
+
+            this.meltFrameCount = 20;
+            this.meltFrames = [];
+            for (var i = 0; i < this.meltFrameCount; i++) {
+                this.meltFrames.push(1 - (i / this.meltFrameCount));
+            }
+
+            this.randomizeWind = function() {
+                vRndX = plusMinus(rnd(s.vMaxX, 0.2));
+                vRndY = rnd(s.vMaxY, 0.2);
+                if (this.flakes) {
+                    for (var i = 0; i < this.flakes.length; i++) {
+                        if (this.flakes[i].active) {
+                            this.flakes[i].setVelocities();
+                        }
+                    }
+                }
+            };
+
+            this.scrollHandler = function() {
+                // "attach" snowflakes to bottom of window if no absolute bottom value was given
+                scrollY = (s.flakeBottom ? 0 : parseInt(window.scrollY || document.documentElement.scrollTop || document.body.scrollTop, 10));
+                if (isNaN(scrollY)) {
+                    scrollY = 0; // Netscape 6 scroll fix
+                }
+                if (!fixedForEverything && !s.flakeBottom && s.flakes) {
+                    for (var i = s.flakes.length; i--;) {
+                        if (s.flakes[i].active === 0) {
+                            s.flakes[i].stick();
+                        }
+                    }
+                }
+            };
+
+            this.resizeHandler = function() {
+                if (window.innerWidth || window.innerHeight) {
+                    screenX = window.innerWidth - (!isIE ? 16 : 2) - s.flakeRightOffset;
+                    screenY = (s.flakeBottom ? s.flakeBottom : window.innerHeight);
+                } else {
+                    screenX = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth) - (!isIE ? 8 : 0) - s.flakeRightOffset;
+                    screenY = s.flakeBottom ? s.flakeBottom : (document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
+                }
+                screenX2 = parseInt(screenX / 2, 10);
+            };
+
+            this.resizeHandlerAlt = function() {
+                screenX = s.targetElement.offsetLeft + s.targetElement.offsetWidth - s.flakeRightOffset;
+                screenY = s.flakeBottom ? s.flakeBottom : s.targetElement.offsetTop + s.targetElement.offsetHeight;
+                screenX2 = parseInt(screenX / 2, 10);
+            };
+
+            this.freeze = function() {
+                // pause animation
+                if (!s.disabled) {
+                    s.disabled = 1;
+                } else {
+                    return false;
+                }
+                for (var i = s.timers.length; i--;) {
+                    clearInterval(s.timers[i]);
+                }
+            };
+
+            this.resume = function() {
+                if (s.disabled) {
+                    s.disabled = 0;
+                } else {
+                    return false;
+                }
+                s.timerInit();
+            };
+
+            this.toggleSnow = function() {
+                if (!s.flakes.length) {
+                    // first run
+                    s.start();
+                } else {
+                    s.active = !s.active;
+                    if (s.active) {
+                        s.show();
+                        s.resume();
+                    } else {
+                        s.stop();
+                        s.freeze();
+                    }
+                }
+            };
+
+            this.stop = function() {
+                this.freeze();
+                for (var i = this.flakes.length; i--;) {
+                    this.flakes[i].o.style.display = 'none';
+                }
+                removeEvent(window, 'scroll', s.scrollHandler);
+                removeEvent(window, 'resize', s.resizeHandler);
+                if (!isOldIE) {
+                    removeEvent(window, 'blur', s.freeze);
+                    removeEvent(window, 'focus', s.resume);
+                }
+            };
+
+            this.show = function() {
+                for (var i = this.flakes.length; i--;) {
+                    this.flakes[i].o.style.display = 'block';
+                }
+            };
+
+            this.SnowFlake = function(parent, type, x, y) {
+                var s = this;
+                var storm = parent;
+                this.type = type;
+                this.x = x || parseInt(rnd(screenX - 20), 10);
+                this.y = (!isNaN(y) ? y : -rnd(screenY) - 12);
+                this.vX = null;
+                this.vY = null;
+                this.vAmpTypes = [1, 1.2, 1.4, 1.6, 1.8]; // "amplification" for vX/vY (based on flake size/type)
+                this.vAmp = this.vAmpTypes[this.type];
+                this.melting = false;
+                this.meltFrameCount = storm.meltFrameCount;
+                this.meltFrames = storm.meltFrames;
+                this.meltFrame = 0;
+                this.twinkleFrame = 0;
+                this.active = 1;
+                this.fontSize = (10 + (this.type / 5) * 10);
+                this.o = document.createElement('div');
+                this.o.innerHTML = storm.snowCharacter;
+                this.o.style.color = storm.snowColor;
+                this.o.style.position = (fixedForEverything ? 'fixed' : 'absolute');
+                this.o.style.width = storm.flakeWidth + 'px';
+                this.o.style.height = storm.flakeHeight + 'px';
+                this.o.style.fontFamily = 'arial,verdana';
+                this.o.style.overflow = 'hidden';
+                this.o.style.fontWeight = 'normal';
+                this.o.style.zIndex = storm.zIndex;
+                docFrag.appendChild(this.o);
+
+                this.refresh = function() {
+                    if (isNaN(s.x) || isNaN(s.y)) {
+                        // safety check
+                        return false;
+                    }
+                    s.o.style.left = s.x + 'px';
+                    s.o.style.top = s.y + 'px';
+                };
+
+                this.stick = function() {
+                    if (noFixed || (storm.targetElement != document.documentElement && storm.targetElement != document.body)) {
+                        s.o.style.top = (screenY + scrollY - storm.flakeHeight) + 'px';
+                    } else if (storm.flakeBottom) {
+                        s.o.style.top = storm.flakeBottom + 'px';
+                    } else {
+                        s.o.style.display = 'none';
+                        s.o.style.top = 'auto';
+                        s.o.style.bottom = '0px';
+                        s.o.style.position = 'fixed';
+                        s.o.style.display = 'block';
+                    }
+                };
+
+                this.vCheck = function() {
+                    if (s.vX >= 0 && s.vX < 0.2) {
+                        s.vX = 0.2;
+                    } else if (s.vX < 0 && s.vX > -0.2) {
+                        s.vX = -0.2;
+                    }
+                    if (s.vY >= 0 && s.vY < 0.2) {
+                        s.vY = 0.2;
+                    }
+                };
+
+                this.move = function() {
+                    var vX = s.vX * windOffset;
+                    s.x += vX;
+                    s.y += (s.vY * s.vAmp);
+                    if (s.x >= screenX || screenX - s.x < storm.flakeWidth) { // X-axis scroll check
+                        s.x = 0;
+                    } else if (vX < 0 && s.x - storm.flakeLeftOffset < 0 - storm.flakeWidth) {
+                        s.x = screenX - storm.flakeWidth - 1; // flakeWidth;
+                    }
+                    s.refresh();
+                    var yDiff = screenY + scrollY - s.y;
+                    if (yDiff < storm.flakeHeight) {
+                        s.active = 0;
+                        if (storm.snowStick) {
+                            s.stick();
+                        } else {
+                            s.recycle();
+                        }
+                    } else {
+                        if (storm.useMeltEffect && s.active && s.type < 3 && !s.melting && Math.random() > 0.998) {
+                            // ~1/1000 chance of melting mid-air, with each frame
+                            s.melting = true;
+                            s.melt();
+                            // only incrementally melt one frame
+                            // s.melting = false;
+                        }
+                        if (storm.useTwinkleEffect) {
+                            if (!s.twinkleFrame) {
+                                if (Math.random() > 0.9) {
+                                    s.twinkleFrame = parseInt(Math.random() * 20, 10);
+                                }
+                            } else {
+                                s.twinkleFrame--;
+                                s.o.style.visibility = (s.twinkleFrame && s.twinkleFrame % 2 === 0 ? 'hidden' : 'visible');
+                            }
+                        }
+                    }
+                };
+
+                this.animate = function() {
+                    // main animation loop
+                    // move, check status, die etc.
+                    s.move();
+                };
+
+                this.setVelocities = function() {
+                    s.vX = vRndX + rnd(storm.vMaxX * 0.12, 0.1);
+                    s.vY = vRndY + rnd(storm.vMaxY * 0.12, 0.1);
+                };
+
+                this.setOpacity = function(o, opacity) {
+                    if (!opacitySupported) {
+                        return false;
+                    }
+                    o.style.opacity = opacity;
+                };
+
+                this.melt = function() {
+                    if (!storm.useMeltEffect || !s.melting) {
+                        s.recycle();
+                    } else {
+                        if (s.meltFrame < s.meltFrameCount) {
+                            s.meltFrame++;
+                            s.setOpacity(s.o, s.meltFrames[s.meltFrame]);
+                            s.o.style.fontSize = s.fontSize - (s.fontSize * (s.meltFrame / s.meltFrameCount)) + 'px';
+                            s.o.style.lineHeight = storm.flakeHeight + 2 + (storm.flakeHeight * 0.75 * (s.meltFrame / s.meltFrameCount)) + 'px';
+                        } else {
+                            s.recycle();
+                        }
+                    }
+                };
+
+                this.recycle = function() {
+                    s.o.style.display = 'none';
+                    s.o.style.position = (fixedForEverything ? 'fixed' : 'absolute');
+                    s.o.style.bottom = 'auto';
+                    s.setVelocities();
+                    s.vCheck();
+                    s.meltFrame = 0;
+                    s.melting = false;
+                    s.setOpacity(s.o, 1);
+                    s.o.style.padding = '0px';
+                    s.o.style.margin = '0px';
+                    s.o.style.fontSize = s.fontSize + 'px';
+                    s.o.style.lineHeight = (storm.flakeHeight + 2) + 'px';
+                    s.o.style.textAlign = 'center';
+                    s.o.style.verticalAlign = 'baseline';
+                    s.x = parseInt(rnd(screenX - storm.flakeWidth - 20), 10);
+                    s.y = parseInt(rnd(screenY) * -1, 10) - storm.flakeHeight;
+                    s.refresh();
+                    s.o.style.display = 'block';
+                    s.active = 1;
+                };
+
+                this.recycle(); // set up x/y coords etc.
+                this.refresh();
+
+            };
+
+            this.snow = function() {
+                var active = 0;
+                var used = 0;
+                var waiting = 0;
+                var flake = null;
+                for (var i = s.flakes.length; i--;) {
+                    if (s.flakes[i].active == 1) {
+                        s.flakes[i].move();
+                        active++;
+                    } else if (s.flakes[i].active === 0) {
+                        used++;
+                    } else {
+                        waiting++;
+                    }
+                    if (s.flakes[i].melting) {
+                        s.flakes[i].melt();
+                    }
+                }
+                if (active < s.flakesMaxActive) {
+                    flake = s.flakes[parseInt(rnd(s.flakes.length), 10)];
+                    if (flake.active === 0) {
+                        flake.melting = true;
+                    }
+                }
+            };
+
+            this.mouseMove = function(e) {
+                if (!s.followMouse) {
+                    return true;
+                }
+                var x = parseInt(e.clientX, 10);
+                if (x < screenX2) {
+                    windOffset = -windMultiplier + (x / screenX2 * windMultiplier);
+                } else {
+                    x -= screenX2;
+                    windOffset = (x / screenX2) * windMultiplier;
+                }
+            };
+
+            this.createSnow = function(limit, allowInactive) {
+                for (var i = 0; i < limit; i++) {
+                    s.flakes[s.flakes.length] = new s.SnowFlake(s, parseInt(rnd(flakeTypes), 10));
+                    if (allowInactive || i > s.flakesMaxActive) {
+                        s.flakes[s.flakes.length - 1].active = -1;
+                    }
+                }
+                storm.targetElement.appendChild(docFrag);
+            };
+
+            this.timerInit = function() {
+                s.timers = (!isWin9X ? [setInterval(s.snow, s.animationInterval)] : [setInterval(s.snow, s.animationInterval * 3), setInterval(s.snow, s.animationInterval)]);
+            };
+
+            this.init = function() {
+                s.randomizeWind();
+                s.createSnow(s.flakesMax); // create initial batch
+                addEvent(window, 'resize', s.resizeHandler);
+                addEvent(window, 'scroll', s.scrollHandler);
+                if (!isOldIE) {
+                    addEvent(window, 'blur', s.freeze);
+                    addEvent(window, 'focus', s.resume);
+                }
+                s.resizeHandler();
+                s.scrollHandler();
+                if (s.followMouse) {
+                    addEvent(document, 'mousemove', s.mouseMove);
+                }
+                s.animationInterval = Math.max(20, s.animationInterval);
+                s.timerInit();
+            };
+
+            var didInit = false;
+
+            this.start = function(bFromOnLoad) {
+                if (!didInit) {
+                    didInit = true;
+                } else if (bFromOnLoad) {
+                    // already loaded and running
+                    return true;
+                }
+                if (typeof s.targetElement == 'string') {
+                    var targetID = s.targetElement;
+                    s.targetElement = document.getElementById(targetID);
+                    if (!s.targetElement) {
+                        throw new Error('Snowstorm: Unable to get targetElement "' + targetID + '"');
+                    }
+                }
+                if (!s.targetElement) {
+                    s.targetElement = (!isIE ? (document.documentElement ? document.documentElement : document.body) : document.body);
+                }
+                if (s.targetElement != document.documentElement && s.targetElement != document.body) {
+                    s.resizeHandler = s.resizeHandlerAlt; // re-map handler to get element instead of screen dimensions
+                }
+                s.resizeHandler(); // get bounding box elements
+                s.usePositionFixed = (s.usePositionFixed && !noFixed); // whether or not position:fixed is supported
+                fixedForEverything = s.usePositionFixed;
+                if (screenX && screenY && !s.disabled) {
+                    s.init();
+                    s.active = true;
+                }
+            };
+
+            function doStart() {
+                s.start(true);
+            }
+
+            if (document.addEventListener) {
+                // safari 3.0.4 doesn't do DOMContentLoaded, maybe others - use a fallback to be safe.
+                document.addEventListener('DOMContentLoaded', doStart, false);
+                window.addEventListener('load', doStart, false);
+            } else {
+                addEvent(window, 'load', doStart);
+            }
+
+        }
+
+        snowStorm = new SnowStorm();
+    </script>
+</body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <h1>TAKE</h1>
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#about">Hakkında</a></li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+                <li><a href="#privacy">Gizlilik Politikası</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <a href="#" class="social-icon"><img src="facebook (1).png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="x (1).png" alt="Twitter"></a>
+            <a href="#" class="social-icon"><img src="instagram-new.png" alt="Instagram"></a>
+            <div class="footer-lines">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+            </div>
+            <div class="footer-contact">
+                <h3>İletişim</h3>
+                <ul>
+                    <li><img src="https://img.icons8.com/ios-filled/20/ffffff/phone.png" alt="Telefon"> <a href="#">+90 123 456 7890</a></li>
+                    <li><img src="https://img.icons8.com/ios-filled/20/ffffff/email.png" alt="E-posta"> <a href="mailto:info@yourbrand.com">amanzhantannur@gmail.com</a></li>
+                    <li><img src="https://img.icons8.com/ios-filled/20/ffffff/marker.png" alt="Adres"> <a href="#">corum hitit</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 . Tüm Hakları Saklıdır.</p>
+    </div>
+    <!-- Animasyonlu Çizgiler -->
+</footer>
+
+</html>

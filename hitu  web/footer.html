@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #00bcd4;
+            /* Fareyle üzerine gelince mavi renk */
+            transform: scale(1.1);
+            /* Büyütme efekti */
+        }
+        
+        footer ul li img,
+        footer a img {
+            transition: transform 0.3s ease;
+        }
+        
+        footer ul li img:hover,
+        footer a img:hover {
+            transform: scale(1.2);
+            /* İkon büyütme */
+        }
+        
+        footer .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        footer h2,
+        footer h3 {
+            margin-bottom: 10px;
+        }
+        
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        footer ul li {
+            line-height: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        footer ul li img {
+            margin-right: 10px;
+        }
+        
+        footer .social-icons a {
+            margin: 0 10px;
+        }
+        
+        footer .footer-bottom {
+            border-top: 1px solid #444;
+            margin-top: 20px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <footer>
+        <div class="footer-container">
+            <!-- Logo ve Hakkımızda -->
+            <div>
+                <h2>YourBrand</h2>
+                <p>
+                    YourBrand, modern tasarıma odaklanan ve kullanıcılara üstün bir internet deneyimi sunmayı amaçlayan bir şirkettir. Katılımınızı bekliyoruz!
+                </p>
+            </div>
+
+            <!-- Hızlı Bağlantılar -->
+            <div>
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="#">Hakkımızda</a></li>
+                    <li><a href="#">Hizmetler</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </div>
+
+            <!-- İletişim Bilgileri ve İkonlar -->
+            <div>
+                <h3>İletişim</h3>
+                <ul>
+                    <li><img src="https://img.icons8.com/ios-filled/20/ffffff/phone.png" alt="Telefon"> <a href="#">+123 456 7890</a></li>
+                    <li><img src="https://img.icons8.com/ios-filled/20/ffffff/email.png" alt="E-posta"> <a href="mailto:info@yourbrand.com">info@yourbrand.com</a></li>
+                    <li><img src="https://img.icons8.com/ios-filled/20/ffffff/marker.png" alt="Adres"> <a href="#">123 Your Street, Your City</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sosyal Medya İkonları -->
+        <div class="social-icons" style="text-align: center; margin-top: 20px;">
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/facebook--v1.png" alt="Facebook"></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/instagram-new.png" alt="Instagram"></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/x.png" alt="X"></a>
+            <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 YourBrand. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
