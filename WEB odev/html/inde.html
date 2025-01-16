@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Sosyal Alan</title>
+    <link rel="stylesheet" href="/css/inde.css">
+</head>
+
+<body>
+    <div class="banner">
+        <video autoplay muted loop>
+            <source src="/gorseller/dongtaıtu.mp4" type="video/mp4">
+            Tarayıcınız video oynatmayı destekemiyor!
+        </video>
+    </div>
+    <div class="container">
+        <div class="animate four" id="animateText">
+            <span>h</span><span>o</span><span>ş</span>
+            <span>g</span><span>e</span><span>l</span>&nbsp;<span>d</span><span>i</span><span>n</span><span>i</span><span>z</span>
+        </div>
+    </div>
+
+
+    <div class="circle">
+        <div class="app app1">
+            <a href="mailto:tangnuramanzhan@gmail.com" style="text-decoration: none;">
+                <img src="/gorseller/mail-1454731_640.webp" alt="Email Icon" style="width: 130px; height: 130px;">
+            </a>
+        </div>
+        <div class="app app2">
+            <a href="https://wa.me/+77474068934" style="text-decoration: none;">
+                <img src="/gorseller/whatsapp.png" alt="WhatsApp Icon" style="width: 115px; height: 115px;">
+            </a>
+        </div>
+        <div class="app app3">
+            <a href="https://www.instagram.com/tannuer_ha" style="text-decoration: none;">
+                <img src="/gorseller/Instagram (2).png" alt="Instagram Icon" style="width: 100px; height: 100px;">
+            </a>
+        </div>
+        <div class="app app4">
+            <a href="https://www.facebook.com/tangnuer Amanjan" style="text-decoration: none;">
+                <img src="/gorseller/Facebook.png" alt="Facebook Icon" style="width: 145px; height: 145px;">
+            </a>
+        </div>
+        <div class="app app5">
+            <a href="https://www.youtube.com/@tangnueramanjan755" style="text-decoration: none;">
+                <img src="/gorseller/youtube.png" alt="YouTube Icon" style="width: 160px; height: 160px;">
+            </a>
+        </div>
+        <div class="app app6">
+            <a href="https://www.tiktok.com/@taa7038" style="text-decoration: none;">
+                <img src="/gorseller/Tiktok.png" alt="TikTok Icon" style="width: 140px; height: 140px;">
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="content">
+        <img class="profile-pic" src="/gorseller/resim1.png" alt="Profile Picture">
+        <h1 class="tan">oo_Take</h1>
+    </div>
+
+
+    <script>
+        const circle = document.querySelector('.circle');
+
+        // fare yaklaşır yuvarlak durur
+        circle.addEventListener('mouseenter', () => {
+            circle.style.animationPlayState = 'paused'; // anımatsa durur
+        });
+
+        // fare gıder hareket devam
+        circle.addEventListener('mouseleave', () => {
+            circle.style.animationPlayState = 'running'; //animatsa normal hareket eder
+        });
+    </script>
+    <script>
+        const contactItems = document.querySelectorAll('.contact-item');
+        contactItems.forEach(item => {
+            item.addEventListener('mousedown', (e) => {
+                const onMouseMove = (event) => {
+                    item.style.top = `${event.clientY - 25}px`;
+                    item.style.left = `${event.clientX
+    - 25}px`;
+                };
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                }, {
+                    once: true
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

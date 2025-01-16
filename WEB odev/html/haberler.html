@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haberler Sayfası</title>
+    <link rel="stylesheet" href="/css/haberler.css">
+    <script>
+        function toggleDetails(element) {
+            const details = element.parentElement.querySelector('.news-details');
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+                element.textContent = 'Kapat';
+            } else {
+                details.style.display = 'none';
+                element.textContent = 'Devamını Oku';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">Haberler ve Güncellemeler</div>
+    <nav>
+        <a href="/html/index.html" class="menu-item houm">
+            <div><img src="/gorseller/hom.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">HOME</span>
+        </a>
+        <a href="/html/icerikk.html" class="menu-item ">
+            <div><img src="/gorseller/pro.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">CONTACT</span>
+        </a>
+        <a href="/html/profil.html" class="menu-item ">
+            <div>
+                <img src="/gorseller/abou.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">ABOUT</span>
+        </a>
+        <a href="/html/haberler.html" class="menu-item ">
+            <div>
+                <img src="/gorseller/servis.png" alt="menu foto " style="width: 50px; height: 50px; ">
+            </div>
+            <span class="text ">HABER</span>
+        </a>
+
+    </nav>
+    <div class="container">
+        <div class="news-item">
+            <img src="/gorseller/muhen (1).jpeg" alt="Haber Resmi">
+            <div class="news-content">
+                <h2>Yazılım Mühendisliği: Geleceğin Mesleği</h2>
+                <p>Yazılım mühendisliği, günümüz teknolojisinin temel taşı haline gelmiştir. Bu meslek, hayatımızın her alanında etkisini göstermeye devam ediyor.</p>
+                <div class="news-details">Yazılım mühendisliği, sadece kod yazmak değil; aynı zamanda problem çözme, sistem tasarlama ve teknolojiyi etkili bir şekilde kullanma yeteneğini gerektirir. Gelecekte bu alanda büyük yeniliklerin olması bekleniyor.</div>
+                <a onclick="toggleDetails(this)" class="read-more">Devamını Oku</a>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="/gorseller/muhen (2).jpeg" alt="Haber Resmi">
+            <div class="news-content">
+                <h2>Yapay Zeka ve Yazılım Mühendisliği</h2>
+                <p>Yapay zeka, yazılım mühendisliğini dönüştürmeye devam ediyor. Günümüzde birçok yazılım yapay zeka algoritmalarıyla güçlendiriliyor.</p>
+                <div class="news-details">Yapay zeka, özellikle makine öğrenimi ve derin öğrenme alanlarında yazılım mühendisliğine yeni bir boyut kazandırmıştır. Bu gelişmeler, birçok sektörde devrim yaratmıştır.</div>
+                <a onclick="toggleDetails(this)" class="read-more">Devamını Oku</a>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="/gorseller/muhen (3).jpeg" alt="Haber Resmi">
+            <div class="news-content">
+                <h2>Uzaktan Çalışma ve Yazılım Mühendisliği</h2>
+                <p>Son yıllarda uzaktan çalışma, yazılım mühendislerinin iş yapış şekillerinde önemli değişikliklere neden oldu.</p>
+                <div class="news-details">Uzaktan çalışma, esneklik ve verimlilik avantajları sunarken, ekip iletişimini ve işbirliğini artıran yeni araçların geliştirilmesine yol açtı. Yazılım mühendisleri, bu süreçte teknolojiyle daha entegre çalışmaya başladı.</div>
+                <a onclick="toggleDetails(this)" class="read-more">Devamını Oku</a>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="/gorseller/muhen (4).jpeg" alt="Haber Resmi">
+            <div class="news-content">
+                <h2>Blockchain ve Yazılım Mühendisliği</h2>
+                <p>Blockchain teknolojisi, yazılım mühendisliğinde yeni fırsatlar yaratıyor. Bu yenilikçi teknoloji, güvenliği ön planda tutuyor.</p>
+                <div class="news-details">Blockchain, özellikle finans, sağlık ve lojistik gibi sektörlerde büyük bir etki yaratmıştır. Yazılım mühendisleri, bu teknolojiyi daha geniş alanlara yaymak için çalışıyor.</div>
+                <a onclick="toggleDetails(this)" class="read-more">Devamını Oku</a>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="/gorseller/muhen (5).jpeg" alt="Haber Resmi">
+            <div class="news-content">
+                <h2>Yazılım Test Mühendisliği Neden Önemlidir?</h2>
+                <p>Yazılım test mühendisliği, kaliteli ve güvenilir yazılımlar geliştirmek için kritik bir rol oynar.</p>
+                <div class="news-details">Test mühendisliği, yazılımların hatasız bir şekilde çalışmasını sağlamak ve kullanıcı deneyimini artırmak için önemlidir. Bu alandaki yenilikler, daha hızlı ve etkili test süreçleri sunuyor.</div>
+                <a onclick="toggleDetails(this)" class="read-more">Devamını Oku</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>TAKE</h1>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#about">Hakkında</a></li>
+                    <li><a href="#services">Hizmetler</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                    <li><a href="#privacy">Gizlilik Politikası</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><img src="/gorseller/facebook (1).png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="/gorseller/x (1).png" alt="Twitter"></a>
+                <a href="#" class="social-icon"><img src="/gorseller/instagram-new.png" alt="Instagram"></a>
+                <div class="footer-lines">
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                </div>
+                <div class="footer-contact">
+                    <h3>İletişim</h3>
+                    <ul>
+                        <li><img src="https://img.icons8.com/ios-filled/20/ffffff/phone.png" alt="Telefon"> <a href="#">+90 123 456 7890</a></li>
+                        <li><img src="https://img.icons8.com/ios-filled/20/ffffff/email.png" alt="E-posta"> <a href="mailto:info@yourbrand.com">amanzhantannur@gmail.com</a></li>
+                        <li><img src="https://img.icons8.com/ios-filled/20/ffffff/marker.png" alt="Adres"> <a href="#">corum hitit</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025.</p>
+        </div>
+        <!-- Animasyonlu Çizgiler -->
+    </footer>
+</body>
+
+</html>
